@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Woodstream Immigration Services Inc. | Strategic Intelligence Console</title>
+  <meta name="description" content="Woodstream Immigration Services Inc. | Strategic Intelligence Console — precedent-based strategy for high-probability immigration outcomes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" crossorigin="">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            slate: { 950: '#0a0f1a', 975: '#060a12' },
+            gold: { 400: '#d4af37', 500: '#c9a227', 600: '#b8960f' }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif']
+          },
+          animation: {
+            'gradient': 'gradient 30s ease infinite',
+            'shimmer': 'shimmer 400ms ease-out'
+          },
+          keyframes: {
+            gradient: {
+              '0%, 100%': { 'background-position': '0% 50%' },
+              '50%': { 'background-position': '100% 50%' }
+            },
+            shimmer: {
+              '0%': { transform: 'translateX(-100%) skewX(-15deg)', opacity: '0' },
+              '100%': { transform: 'translateX(200%) skewX(-15deg)', opacity: '0.4' }
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --gold: #c9a227;
+      --gold-soft: rgba(201, 162, 39, 0.15);
+      --slate-deep: #0a0f1a;
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--slate-deep); color: #e2e8f0; }
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+    .contain-paint { contain: layout paint; }
+    .gold-shimmer::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 0%, rgba(201,162,39,0.12) 45%, transparent 55%);
+      transform: translateX(-100%) skewX(-12deg);
+      opacity: 0;
+      pointer-events: none;
+      transition: none;
+    }
+    .gold-shimmer:hover::after { animation: shimmer 400ms ease-out forwards; }
+    .scroll-progress { height: 2px; background: linear-gradient(90deg, var(--gold), transparent); transform-origin: left; }
+    .magnetic-wrap { display: inline-block; will-change: transform; }
+    .tile-enter { opacity: 0; transform: translateY(10px); }
+    .tile-enter.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s var(--ease-smooth), transform 0.5s var(--ease-smooth); }
+    .gauge-circle { transform: rotate(-90deg); }
+    .policy-relevant { box-shadow: 0 0 0 1px rgba(201,162,39,0.4), 0 0 20px rgba(201,162,39,0.15); animation: pulse-gold 2s ease-in-out infinite; }
+    @keyframes pulse-gold { 0%, 100% { box-shadow: 0 0 0 1px rgba(201,162,39,0.4), 0 0 20px rgba(201,162,39,0.15); } 50% { box-shadow: 0 0 0 2px rgba(201,162,39,0.6), 0 0 30px rgba(201,162,39,0.25); } }
+    .advisor-note { animation: slideUp 0.4s var(--ease-smooth) forwards; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .panel-collapse { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease-smooth); }
+    .panel-collapse.open { max-height: 1200px; }
+    input[type="range"] { accent-color: var(--gold); }
+    .delta-positive { color: #86efac; }
+    .policy-pulse { animation: pulse-gold 2s ease-in-out infinite; }
+    /* Immigration Policy Pulse */
+    .pulse-section { background-color: #1A1E2B; }
+    .pulse-feed { border-left: 1px solid rgba(198, 164, 63, 0.2); margin-left: 0.5rem; padding-left: 1.5rem; }
+    .pulse-item { padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .pulse-item:last-child { border-bottom: 0; }
+    .pulse-date { color: #C6A43F; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; }
+    .pulse-headline { color: #fff; font-weight: 600; font-size: 0.9375rem; line-height: 1.35; margin-top: 0.25rem; }
+    .pulse-summary { color: #b8c0cc; font-size: 0.8125rem; line-height: 1.5; margin-top: 0.5rem; }
+    .pulse-impact { display: inline-block; margin-top: 0.5rem; padding: 0.2rem 0.5rem; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase; color: #C6A43F; border: 1px solid rgba(198, 164, 63, 0.4); border-radius: 4px; }
+    .pulse-filter-btn { padding: 0.4rem 0.75rem; font-size: 0.75rem; font-weight: 500; color: #94a3b8; background: transparent; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .pulse-filter-btn:hover { color: #e2e8f0; border-color: rgba(198, 164, 63, 0.3); }
+    .pulse-filter-btn.active { color: #C6A43F; border-color: rgba(198, 164, 63, 0.5); background: rgba(198, 164, 63, 0.08); }
+  </style>
+</head>
+<body class="antialiased min-h-screen">
+  <!-- Scroll progress -->
+  <div class="fixed top-0 left-0 right-0 z-[100] pointer-events-none">
+    <div id="scrollProgress" class="scroll-progress w-0 transition-[width] duration-150"></div>
+  </div>
+
+  <!-- Firm credentials bar -->
+  <div class="border-b border-white/5 bg-slate-950/95">
+    <div class="max-w-7xl mx-auto px-4 py-1.5 flex flex-wrap items-center justify-center gap-x-6 gap-y-0 text-[10px] tracking-widest text-slate-400 font-mono">
+      <span>3883 Hwy 7 #218, Woodbridge, ON L4L 6B9</span>
+      <span><a href="tel:+19058567600" class="text-slate-400 hover:text-slate-300 transition-colors">(905) 856-7600</a></span>
+      <span>4.9/5 (Google Verified)</span>
+    </div>
+  </div>
+
+  <header class="border-b border-white/5 bg-slate-950/80 backdrop-blur-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      <span class="font-serif text-xl text-white">WOODSTREAM IMMIGRATION</span>
+      <nav class="text-sm text-slate-400 space-x-6">
+        <a href="#strategy-panel" class="gold-shimmer relative hover:text-amber-200 transition-colors">Strategy</a>
+        <a href="#policy-console" class="gold-shimmer relative hover:text-amber-200 transition-colors">Policy</a>
+        <a href="#blueprint" class="gold-shimmer relative hover:text-amber-200 transition-colors">Blueprint</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <!-- Digital Twin welcome -->
+    <div id="welcomeBanner" class="mb-8 p-4 rounded-lg border border-amber-500/20 bg-amber-500/5 hidden">
+      <p id="welcomeText" class="text-sm text-slate-300"></p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+      <!-- Tile 1: PR & Express Entry (Dominant) -->
+      <div class="lg:col-span-2 lg:row-span-2 contain-paint tile-enter rounded-xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 bg-[length:200%_200%] hover:border-amber-500/30 hover:shadow-lg hover:shadow-amber-500/5 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden group"
+           style="background-image: linear-gradient(135deg, rgba(201,162,39,0.06) 0%, transparent 40%, rgba(10,15,26,1) 70%); background-position: 0% 0%;">
+        <div class="p-8 lg:p-10 min-h-[320px] flex flex-col justify-between">
+          <div>
+            <h1 class="font-serif text-3xl lg:text-4xl text-white mb-2">Architecting permanent residency through precise factor optimization.</h1>
+            <p class="text-slate-400 text-sm lg:text-base max-w-xl mt-3">Precedent-based strategy for high-probability outcomes. Express Entry CRS analysis, draw competitiveness, and scenario modelling.</p>
+          </div>
+          <div class="mt-8">
+            <a id="openCRSPanel" href="#crs-engine" class="magnetic-wrap inline-block px-6 py-3 rounded-md border border-amber-500/50 bg-amber-500/10 text-amber-200 text-sm font-medium gold-shimmer relative overflow-hidden hover:bg-amber-500/20 transition-colors">
+              Open CRS strategy panel
+            </a>
+          </div>
+        </div>
+        <div class="h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></div>
+      </div>
+
+      <!-- Tile 2: Study Pathways -->
+      <div class="contain-paint tile-enter rounded-xl border border-white/10 bg-slate-900/80 hover:border-amber-500/20 transition-all duration-300 overflow-hidden group">
+        <div class="p-6 min-h-[180px] flex flex-col justify-between">
+          <div>
+            <h2 class="font-serif text-xl text-white">Study pathways</h2>
+            <p class="text-slate-400 text-sm mt-2">Strategic education-to-PR planning.</p>
+            <p class="text-slate-500 text-xs mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">DLI selection · PGWP optimization · Spousal work permits</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tile 3: Policy Intelligence Console -->
+      <div id="policy-console" class="lg:col-span-2 contain-paint tile-enter rounded-xl border border-white/10 bg-slate-900/80 overflow-hidden">
+        <div class="p-4 border-b border-white/5">
+          <h2 class="font-serif text-lg text-white">Policy Intelligence Console</h2>
+        </div>
+        <div id="policyHeadline" class="px-4 py-3 min-h-[52px] text-sm text-slate-300 transition-opacity duration-500"></div>
+        <div id="policyLower" class="px-4 pb-4 space-y-2">
+          <div id="policyTag" class="text-xs text-amber-400/90"></div>
+          <div id="policyImpact" class="text-xs text-slate-500"></div>
+          <div id="policyRelevance" class="text-xs text-amber-400/80 hidden">Relevant to your profile.</div>
+        </div>
+        <div class="px-4 pb-4 flex items-center gap-3 flex-wrap">
+          <span class="text-xs text-slate-500">Draw simulator:</span>
+          <input type="number" id="drawSimulatorCutoff" placeholder="Cut-off" class="w-20 px-2 py-1 rounded bg-slate-800 border border-white/10 text-sm text-white focus:border-amber-500/50 outline-none" min="350" max="600" value="500">
+          <span id="drawSimulatorResult" class="text-xs text-slate-400"></span>
+        </div>
+        <p class="px-4 pb-2 text-xs text-slate-500">Enter a hypothetical cut-off to see how many past draws would have invited you.</p>
+      </div>
+
+      <!-- Tile 4: Case Outcomes -->
+      <div class="contain-paint tile-enter rounded-xl border border-white/10 bg-slate-900/80 overflow-hidden">
+        <div class="p-4 border-b border-white/5">
+          <h2 class="font-serif text-lg text-white">Case outcomes</h2>
+        </div>
+        <div id="caseOutcomesRotate" class="p-4 min-h-[140px]">
+          <p id="caseOutcomeText" class="text-sm text-slate-300"></p>
+          <p id="caseOutcomeLevers" class="text-xs text-amber-400/80 mt-2"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRS Engine & Dashboard -->
+    <section id="crs-engine" class="mt-12 scroll-mt-8">
+      <div class="border border-white/10 rounded-xl bg-slate-900/50 overflow-hidden">
+        <div class="p-4 border-b border-white/5 flex flex-wrap items-center justify-between gap-4">
+          <h2 class="font-serif text-xl text-white">CRS Strategy Panel</h2>
+          <div class="flex items-center gap-4">
+            <span class="text-sm text-slate-400">Live score</span>
+            <div class="flex items-baseline gap-2">
+              <span id="liveScore" class="text-3xl font-semibold text-white tabular-nums">0</span>
+              <span id="scoreDelta" class="text-sm delta-positive hidden">+0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Base profile (compact) -->
+        <div class="p-4 border-b border-white/5 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 text-sm">
+          <label class="block">
+            <span class="text-slate-500">Age</span>
+            <input type="number" id="profileAge" min="18" max="45" value="30" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none">
+          </label>
+          <label class="block">
+            <span class="text-slate-500">Education</span>
+            <select id="profileEducation" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none">
+              <option value="0">Less than secondary</option>
+              <option value="1">Secondary</option>
+              <option value="2">One-year credential</option>
+              <option value="3">Two-year program</option>
+              <option value="4" selected>Bachelor / 3+ years</option>
+              <option value="5">Two+ credentials (one 3+ yrs)</option>
+              <option value="6">Master's / professional</option>
+              <option value="7">Doctoral</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-slate-500">With spouse?</span>
+            <select id="profileSpouse" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-slate-500">Canadian work (yrs)</span>
+            <input type="number" id="profileCanWork" min="0" max="5" value="2" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none">
+          </label>
+          <label class="block">
+            <span class="text-slate-500">Foreign work (yrs)</span>
+            <input type="number" id="profileForeignWork" min="0" max="6" value="3" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none">
+          </label>
+          <label class="block">
+            <span class="text-slate-500">Sibling in Canada</span>
+            <select id="profileSibling" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-slate-500">Canadian education</span>
+            <select id="profileCanEdu" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none">
+              <option value="0">None</option>
+              <option value="1">1–2 year credential</option>
+              <option value="2">3+ year credential</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-slate-500">PNP</span>
+            <select id="profilePNP" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </label>
+        </div>
+
+        <!-- Language (first): IELTS equivalents -->
+        <div class="p-4 border-b border-white/5">
+          <h3 class="text-sm font-medium text-slate-300 mb-3">First official language (per ability)</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <label class="block"><span class="text-slate-500 text-xs">Listening</span>
+              <select id="langL" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white text-sm focus:border-amber-500/50 outline-none"></select></label>
+            <label class="block"><span class="text-slate-500 text-xs">Reading</span>
+              <select id="langR" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white text-sm focus:border-amber-500/50 outline-none"></select></label>
+            <label class="block"><span class="text-slate-500 text-xs">Writing</span>
+              <select id="langW" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white text-sm focus:border-amber-500/50 outline-none"></select></label>
+            <label class="block"><span class="text-slate-500 text-xs">Speaking</span>
+              <select id="langS" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white text-sm focus:border-amber-500/50 outline-none"></select></label>
+          </div>
+        </div>
+        <div class="p-4 border-b border-white/5">
+          <h3 class="text-sm font-medium text-slate-300 mb-3">Second official language (French) — CLB</h3>
+          <input type="range" id="secondLangCLB" min="0" max="9" value="0" class="w-full max-w-xs">
+          <span id="secondLangLabel" class="text-slate-400 text-sm ml-2">CLB 0 (none)</span>
+        </div>
+
+        <!-- Strategic Adjustments (collapsible) -->
+        <div class="border-t border-white/5">
+          <button id="toggleAdjustments" class="w-full px-4 py-3 flex justify-between items-center text-left text-sm font-medium text-slate-300 hover:bg-white/5 transition-colors">
+            Strategic adjustments
+            <svg id="chevronAdjust" class="w-4 h-4 text-slate-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="panelAdjustments" class="panel-collapse">
+            <div class="px-4 pb-4 space-y-4">
+              <p class="text-xs text-slate-500">Adjust sliders to model what-if scenarios. Score updates in real time.</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="text-xs text-slate-500">IELTS Listening (delta)</label>
+                  <input type="range" id="adjL" min="-2" max="2" step="0.5" value="0" class="w-full mt-1">
+                  <span id="adjLVal" class="text-xs text-slate-400">0</span>
+                </div>
+                <div>
+                  <label class="text-xs text-slate-500">IELTS Reading (delta)</label>
+                  <input type="range" id="adjR" min="-2" max="2" step="0.5" value="0" class="w-full mt-1">
+                  <span id="adjRVal" class="text-xs text-slate-400">0</span>
+                </div>
+                <div>
+                  <label class="text-xs text-slate-500">IELTS Writing (delta)</label>
+                  <input type="range" id="adjW" min="-2" max="2" step="0.5" value="0" class="w-full mt-1">
+                  <span id="adjWVal" class="text-xs text-slate-400">0</span>
+                </div>
+                <div>
+                  <label class="text-xs text-slate-500">IELTS Speaking (delta)</label>
+                  <input type="range" id="adjS" min="-2" max="2" step="0.5" value="0" class="w-full mt-1">
+                  <span id="adjSVal" class="text-xs text-slate-400">0</span>
+                </div>
+                <div>
+                  <label class="text-xs text-slate-500">French CLB (scenario)</label>
+                  <input type="range" id="adjFrench" min="0" max="9" value="0" class="w-full mt-1">
+                  <span id="adjFrenchVal" class="text-xs text-slate-400">0</span>
+                </div>
+                <div>
+                  <label class="text-xs text-slate-500">Additional Canadian work (yrs)</label>
+                  <input type="range" id="adjCanWork" min="0" max="3" value="0" class="w-full mt-1">
+                  <span id="adjCanWorkVal" class="text-xs text-slate-400">0</span>
+                </div>
+                <div>
+                  <label class="text-xs text-slate-500">PNP in scenario</label>
+                  <select id="adjPNP" class="mt-1 w-full px-2 py-1.5 rounded bg-slate-800 border border-white/10 text-white text-sm focus:border-amber-500/50 outline-none">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-3 items-center">
+                <button id="saveScenario" class="px-4 py-2 rounded-md border border-amber-500/50 text-amber-200 text-sm hover:bg-amber-500/20 transition-colors gold-shimmer relative">Save this scenario</button>
+                <span id="scenarioSaveStatus" class="text-xs text-slate-500"></span>
+              </div>
+              <div id="savedScenarios" class="flex flex-wrap gap-2"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scenario comparison -->
+        <div class="p-4 border-b border-white/5">
+          <h3 class="text-sm font-medium text-slate-300 mb-2">Scenario comparison</h3>
+          <div id="scenarioComparison" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm"></div>
+        </div>
+
+        <!-- Competitiveness dashboard -->
+        <div class="p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="flex flex-col items-center">
+            <p class="text-xs text-slate-500 mb-2">Invitation probability</p>
+            <div class="relative w-24 h-24">
+              <svg class="w-24 h-24 gauge-circle" viewBox="0 0 36 36">
+                <path d="M18 2.5 a 15.5 15.5 0 0 1 0 31 a 15.5 15.5 0 0 1 0 -31" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+                <path id="gaugeFill" d="M18 2.5 a 15.5 15.5 0 0 1 0 31 a 15.5 15.5 0 0 1 0 -31" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="0 100" stroke-linecap="round"/>
+              </svg>
+              <span id="gaugePercent" class="absolute inset-0 flex items-center justify-center text-lg font-semibold text-white">0%</span>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <p class="text-xs text-slate-500 mb-2">Last 6 draws (cut-off)</p>
+            <div id="drawChart" class="min-h-[80px] flex items-end gap-1" style="min-height: 80px;"></div>
+            <div id="drawChartLabels" class="flex gap-1 mt-1 text-xs text-slate-500"></div>
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="text-xs text-slate-500 mb-1">Ranking band</p>
+            <p id="rankingBand" class="text-lg font-medium text-amber-200/90">—</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategy Center -->
+    <section id="strategy-panel" class="mt-12 scroll-mt-8">
+      <div class="border border-white/10 rounded-xl bg-slate-900/50 overflow-hidden">
+        <div class="p-4 border-b border-white/5">
+          <h2 class="font-serif text-xl text-white">Strategy Center</h2>
+          <p class="text-sm text-slate-500 mt-1">Highest-leverage improvements for your profile</p>
+        </div>
+        <ul id="strategyList" class="divide-y divide-white/5"></ul>
+      </div>
+    </section>
+
+    <!-- Executive Strategy PDF -->
+    <section id="blueprint" class="mt-12 scroll-mt-8">
+      <div class="border border-white/10 rounded-xl bg-slate-900/50 overflow-hidden">
+        <div class="p-6 border-b border-white/5">
+          <h2 class="font-serif text-xl text-white">Immigration Blueprint</h2>
+          <p class="text-sm text-slate-500 mt-1">Generate an executive strategy document. Facts and strategic guidance only.</p>
+        </div>
+        <div class="p-6">
+          <form id="blueprintForm" class="max-w-md space-y-4">
+            <label class="block">
+              <span class="text-sm text-slate-400">Name</span>
+              <input type="text" id="blueprintName" name="name" class="mt-1 w-full px-3 py-2 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none" required>
+            </label>
+            <label class="block">
+              <span class="text-sm text-slate-400">Email</span>
+              <input type="email" id="blueprintEmail" name="email" class="mt-1 w-full px-3 py-2 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none" required>
+            </label>
+            <label class="block">
+              <span class="text-sm text-slate-400">Notes (optional)</span>
+              <textarea id="blueprintNotes" name="notes" rows="2" class="mt-1 w-full px-3 py-2 rounded bg-slate-800 border border-white/10 text-white focus:border-amber-500/50 outline-none resize-none"></textarea>
+            </label>
+            <button type="submit" class="magnetic-wrap px-6 py-3 rounded-md border border-amber-500/50 bg-amber-500/10 text-amber-200 text-sm font-medium gold-shimmer relative overflow-hidden hover:bg-amber-500/20 transition-colors">
+              Generate Executive Strategy PDF
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Immigration Policy Pulse -->
+    <section id="immigration-policy-pulse" class="pulse-section mt-16 scroll-mt-8 rounded-xl border border-white/10 overflow-hidden">
+      <div class="p-6 md:p-8 border-b border-white/5">
+        <h2 class="font-serif text-xl md:text-2xl text-white">Immigration Policy Pulse</h2>
+        <p class="text-sm text-slate-400 mt-2 max-w-2xl">Live regulatory signals and ministerial updates analyzed for strategic impact.</p>
+        <div class="flex flex-wrap gap-2 mt-5" role="tablist" aria-label="Filter by category">
+          <button type="button" class="pulse-filter-btn active" data-filter="all">All</button>
+          <button type="button" class="pulse-filter-btn" data-filter="express-entry">Express Entry</button>
+          <button type="button" class="pulse-filter-btn" data-filter="pnp">PNP</button>
+          <button type="button" class="pulse-filter-btn" data-filter="study">Study</button>
+          <button type="button" class="pulse-filter-btn" data-filter="work-permit">Work Permit</button>
+        </div>
+      </div>
+      <div class="p-6 md:p-8">
+        <div id="pulseFeedContainer" class="pulse-feed" role="feed" aria-label="Policy and regulatory updates">
+          <!-- Entries rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategic Services -->
+    <section id="strategic-services" class="mt-16 scroll-mt-8">
+      <div class="border border-white/10 rounded-xl bg-slate-900/50 overflow-hidden">
+        <div class="p-6 md:p-8 border-b border-white/5">
+          <h2 class="font-serif text-xl md:text-2xl text-white">Strategic Services</h2>
+          <p class="text-sm text-slate-500 mt-2 max-w-2xl">Institutional representation across federal and provincial immigration frameworks.</p>
+        </div>
+        <div class="p-6 md:p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <article class="strategic-service-card contain-paint rounded-lg border border-white/10 bg-slate-800/30 p-5 md:p-6 transition-all duration-300 hover:border-amber-500/20 hover:bg-slate-800/50">
+              <h3 class="text-sm font-medium tracking-wide text-amber-500/90 uppercase">Express Entry Strategy &amp; Representation</h3>
+              <p class="text-slate-400 text-sm mt-3 leading-relaxed">CRS modeling, optimization planning, and full permanent residence representation aligned with IRCC frameworks.</p>
+            </article>
+            <article class="strategic-service-card contain-paint rounded-lg border border-white/10 bg-slate-800/30 p-5 md:p-6 transition-all duration-300 hover:border-amber-500/20 hover:bg-slate-800/50">
+              <h3 class="text-sm font-medium tracking-wide text-amber-500/90 uppercase">Provincial Nominee Programs (PNP)</h3>
+              <p class="text-slate-400 text-sm mt-3 leading-relaxed">Targeted provincial nomination strategies aligned with labour priorities and Express Entry layering.</p>
+            </article>
+            <article class="strategic-service-card contain-paint rounded-lg border border-white/10 bg-slate-800/30 p-5 md:p-6 transition-all duration-300 hover:border-amber-500/20 hover:bg-slate-800/50">
+              <h3 class="text-sm font-medium tracking-wide text-amber-500/90 uppercase">Study-to-Permanent Residency Architecture</h3>
+              <p class="text-slate-400 text-sm mt-3 leading-relaxed">Academic pathway structuring preserving PGWP eligibility and long-term residency options.</p>
+            </article>
+            <article class="strategic-service-card contain-paint rounded-lg border border-white/10 bg-slate-800/30 p-5 md:p-6 transition-all duration-300 hover:border-amber-500/20 hover:bg-slate-800/50">
+              <h3 class="text-sm font-medium tracking-wide text-amber-500/90 uppercase">Work Permits &amp; LMIA Strategy</h3>
+              <p class="text-slate-400 text-sm mt-3 leading-relaxed">Employer-driven and LMIA-exempt work authorization planning and compliance.</p>
+            </article>
+            <article class="strategic-service-card contain-paint rounded-lg border border-white/10 bg-slate-800/30 p-5 md:p-6 transition-all duration-300 hover:border-amber-500/20 hover:bg-slate-800/50">
+              <h3 class="text-sm font-medium tracking-wide text-amber-500/90 uppercase">Business &amp; Investor Immigration</h3>
+              <p class="text-slate-400 text-sm mt-3 leading-relaxed">Strategic pathways for entrepreneurs and expansion-focused applicants.</p>
+            </article>
+            <article class="strategic-service-card contain-paint rounded-lg border border-white/10 bg-slate-800/30 p-5 md:p-6 transition-all duration-300 hover:border-amber-500/20 hover:bg-slate-800/50">
+              <h3 class="text-sm font-medium tracking-wide text-amber-500/90 uppercase">Executive Strategy Memorandum</h3>
+              <p class="text-slate-400 text-sm mt-3 leading-relaxed">Private strategic blueprint consolidating CRS position, policy alignment, and optimization pathways.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PDF Modal -->
+  <div id="pdfModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" aria-modal="true" role="dialog" aria-labelledby="pdfModalTitle">
+    <div class="bg-slate-900 border border-white/10 rounded-xl max-w-lg w-full max-h-[90vh] overflow-auto">
+      <div class="p-4 border-b border-white/5 flex justify-between items-center">
+        <h3 id="pdfModalTitle" class="font-serif text-lg text-white">Executive Strategy — Preview</h3>
+        <button id="closePdfModal" type="button" class="text-slate-400 hover:text-white transition-colors">&times;</button>
+      </div>
+      <div id="pdfPreview" class="p-6 text-sm text-slate-300 space-y-4 font-mono whitespace-pre-wrap"></div>
+      <div class="p-4 border-t border-white/5 flex gap-3">
+        <button id="downloadPdf" class="px-4 py-2 rounded-md bg-amber-500/20 border border-amber-500/50 text-amber-200 hover:bg-amber-500/30 transition-colors">Download PDF</button>
+        <button id="closePdfModal2" type="button" class="px-4 py-2 rounded-md border border-white/20 text-slate-400 hover:text-white transition-colors">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Advisor Note -->
+  <div id="advisorNote" class="fixed bottom-6 left-4 right-4 md:left-auto md:right-6 md:max-w-sm z-40 hidden p-4 rounded-lg border border-amber-500/30 bg-slate-900 shadow-xl advisor-note">
+    <p id="advisorNoteText" class="text-sm text-slate-300 mb-3"></p>
+    <div class="flex gap-2">
+      <button id="advisorHighlight" class="px-3 py-1.5 rounded border border-amber-500/50 text-amber-200 text-xs hover:bg-amber-500/20">Highlight PNP lever</button>
+      <button id="advisorDismiss" class="px-3 py-1.5 rounded border border-white/20 text-slate-400 text-xs hover:text-white">Dismiss</button>
+    </div>
+  </div>
+
+  <!-- About & Contact -->
+  <section class="mt-24 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-4 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+        <div class="lg:col-span-2">
+          <h3 class="text-xs font-medium tracking-widest text-amber-500/80 uppercase mb-6">About</h3>
+          <p class="font-serif text-xl text-white tracking-wide">WOODSTREAM IMMIGRATION</p>
+          <p class="text-slate-500 text-sm mt-1 italic">Woodstream Immigration Services Inc.</p>
+          <p class="text-slate-400 text-sm mt-4 leading-relaxed">Regulated Canadian Immigration Consultant (RCIC)<br>Educational Consultant</p>
+          <p class="text-slate-500 text-sm mt-4 leading-relaxed">Strategic advisory focused on Express Entry, Provincial Nominee Programs, and study-to-permanent residency pathways.</p>
+        </div>
+        <div>
+          <h3 class="text-xs font-medium tracking-widest text-amber-500/80 uppercase mb-6">Contact Information</h3>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li>Address: 3883 Hwy 7 #218, Woodbridge, ON L4L 6B9</li>
+            <li>Phone: <a href="tel:+19058567600" class="text-slate-300 hover:text-amber-400/90 transition-colors">(905) 856-7600</a></li>
+            <li>4.9/5 (Google Verified)</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xs font-medium tracking-widest text-amber-500/80 uppercase mb-6">Languages</h3>
+          <p class="text-sm text-slate-400">English · Punjabi · Hindi · Urdu</p>
+          <h3 class="text-xs font-medium tracking-widest text-amber-500/80 uppercase mt-10 mb-6">Professional Channels</h3>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li>LinkedIn: <a href="https://www.linkedin.com/feed/" class="text-slate-300 hover:text-amber-400/90 transition-colors" rel="noopener noreferrer" target="_blank">linkedin.com</a></li>
+            <li>Instagram: <a href="https://www.instagram.com/woodstreamimmigration" class="text-slate-300 hover:text-amber-400/90 transition-colors" rel="noopener noreferrer" target="_blank">@woodstreamimmigration</a></li>
+            <li>YouTube: <a href="https://www.youtube.com/@woodstreamimmigration" class="text-slate-300 hover:text-amber-400/90 transition-colors" rel="noopener noreferrer" target="_blank">@woodstreamimmigration</a></li>
+            <li>TikTok: <a href="https://www.tiktok.com/@woodstreamimmigration" class="text-slate-300 hover:text-amber-400/90 transition-colors" rel="noopener noreferrer" target="_blank">@woodstreamimmigration</a></li>
+            <li>X: <a href="https://x.com/woodstreamimmigration" class="text-slate-300 hover:text-amber-400/90 transition-colors" rel="noopener noreferrer" target="_blank">@woodstreamimmigration</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 py-12 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="font-serif text-2xl md:text-3xl text-white tracking-wide">WOODSTREAM IMMIGRATION</p>
+      <p class="text-slate-500 text-sm mt-2 italic">Woodstream Immigration Services Inc.</p>
+      <div class="mt-6 font-mono text-[10px] tracking-widest text-slate-400 space-y-0.5">
+        <p>3883 Hwy 7 #218, Woodbridge, ON L4L 6B9</p>
+        <p><a href="tel:+19058567600" class="text-slate-400 hover:text-slate-300 transition-colors">(905) 856-7600</a></p>
+        <p>4.9/5 (Google Verified)</p>
+      </div>
+      <p class="text-amber-500/70 text-xs font-light mt-8 tracking-widest">Practice Areas · Jurisdiction · Professional Responsibility Disclaimer</p>
+    </div>
+  </footer>
+
+  <script>
+(function() {
+  'use strict';
+
+  // ——— Embedded data ———
+  const DRAWS = [
+    { date: '2025-02-19', program: 'All-program', cutoff: 535, invitations: 4250 },
+    { date: '2025-02-05', program: 'All-program', cutoff: 534, invitations: 4100 },
+    { date: '2025-01-22', program: 'All-program', cutoff: 538, invitations: 4000 },
+    { date: '2025-01-08', program: 'All-program', cutoff: 531, invitations: 4300 },
+    { date: '2024-12-18', program: 'All-program', cutoff: 529, invitations: 4200 },
+    { date: '2024-12-04', program: 'French', cutoff: 481, invitations: 2100 },
+    { date: '2024-11-20', program: 'All-program', cutoff: 533, invitations: 4150 },
+    { date: '2024-11-06', program: 'STEM', cutoff: 481, invitations: 1200 },
+    { date: '2024-10-23', program: 'All-program', cutoff: 537, invitations: 4000 },
+    { date: '2024-10-09', program: 'Healthcare', cutoff: 431, invitations: 3500 },
+    { date: '2024-09-25', program: 'All-program', cutoff: 530, invitations: 4250 },
+    { date: '2024-09-11', program: 'All-program', cutoff: 532, invitations: 4100 }
+  ];
+
+  const POLICY_ITEMS = [
+    { id: 1, type: 'draw', programTag: 'Express Entry · All-program', headline: 'February 19, 2025 — All-program draw. CRS cut-off 535.', date: '2025-02-19', categories: ['all'] },
+    { id: 2, type: 'policy', programTag: 'Express Entry', headline: 'Job offer points removed from CRS as of March 2025.', date: '2025-03-01', categories: ['all'] },
+    { id: 3, type: 'draw', programTag: 'Category: French', headline: 'December 4, 2024 — French-language draw. Cut-off 481.', date: '2024-12-04', categories: ['french'] },
+    { id: 4, type: 'policy', programTag: 'Provincial', headline: 'Ontario Immigrant Nominee Program (OINP) intake targets updated.', date: '2025-01-15', categories: ['pnp'] },
+    { id: 5, type: 'draw', programTag: 'Category: STEM', headline: 'November 6, 2024 — STEM draw. CRS threshold 481.', date: '2024-11-06', categories: ['stem'] },
+    { id: 6, type: 'policy', programTag: 'Language', headline: 'French language bonus (50 pts) unchanged for NCLC 7+ with English CLB 5+.', date: '2024-12-01', categories: ['french'] },
+    { id: 7, type: 'draw', programTag: 'Category: Healthcare', headline: 'October 9, 2024 — Healthcare draw. Cut-off 431.', date: '2024-10-09', categories: ['healthcare'] },
+    { id: 8, type: 'policy', programTag: 'Express Entry', headline: 'CRS threshold increased by 3 points in recent all-program draws.', date: '2025-02-01', categories: ['all'] }
+  ];
+
+  const CASE_OUTCOMES = [
+    { fromScore: 423, toScore: 521, levers: 'French + PNP', summary: 'Client added NCLC 7+ and secured provincial nomination.' },
+    { fromScore: 467, toScore: 534, levers: 'IELTS re-test + Canadian work', summary: 'CLB 9 across first language; 1 additional year Canadian experience.' },
+    { fromScore: 489, toScore: 539, levers: 'French (NCLC 7+) + Canadian education', summary: 'Second-language French and 2-year Canadian credential.' },
+    { fromScore: 441, toScore: 531, levers: 'PNP only', summary: 'Provincial nomination added; no other profile change.' }
+  ];
+
+  // ——— CRS Tables (IRCC) ———
+  const AGE_SINGLE = { 17: 0, 18: 99, 19: 105, 20: 110, 21: 110, 22: 110, 23: 110, 24: 110, 25: 110, 26: 110, 27: 110, 28: 110, 29: 110, 30: 105, 31: 99, 32: 94, 33: 88, 34: 83, 35: 77, 36: 72, 37: 66, 38: 61, 39: 55, 40: 50, 41: 39, 42: 28, 43: 17, 44: 6, 45: 0 };
+  const AGE_SPOUSE = { 17: 0, 18: 90, 19: 95, 20: 100, 21: 100, 22: 100, 23: 100, 24: 100, 25: 100, 26: 100, 27: 100, 28: 100, 29: 100, 30: 95, 31: 90, 32: 85, 33: 80, 34: 75, 35: 70, 36: 65, 37: 60, 38: 55, 39: 50, 40: 45, 41: 35, 42: 25, 43: 15, 44: 5, 45: 0 };
+  const EDU_SINGLE = [0, 30, 90, 98, 120, 128, 135, 150];
+  const EDU_SPOUSE = [0, 30, 90, 98, 120, 128, 135, 150];
+  const SPOUSE_EDU = [0, 2, 6, 7, 8, 9, 10, 10];
+  const FIRST_LANG_SINGLE = [0, 6, 9, 17, 23, 31, 34];
+  const FIRST_LANG_SPOUSE = [0, 6, 8, 16, 22, 29, 32];
+  const SECOND_LANG_SINGLE = [0, 1, 3, 6];
+  const SECOND_LANG_SPOUSE = [0, 1, 3, 6];
+  const CAN_WORK_SINGLE = [0, 40, 53, 64, 72, 80];
+  const CAN_WORK_SPOUSE = [0, 35, 46, 56, 63, 70];
+  const SPOUSE_LANG = [0, 1, 3, 5];
+  const SPOUSE_CAN_WORK = [0, 5, 7, 8, 9, 10];
+  const TRANSFER_EDU_LANG = { 0: [0,0], 1: [13,25], 2: [25,50], 3: [25,50], 4: [25,50] };
+  const TRANSFER_EDU_CAN = { 0: [0,0], 1: [13,25], 2: [25,50], 3: [25,50], 4: [25,50] };
+  const TRANSFER_FOREIGN_LANG = { 0: [0,0], 1: [13,25], 2: [25,50] };
+  const TRANSFER_FOREIGN_CAN = { 0: [0,0], 1: [13,25], 2: [25,50] };
+  const ADD_SIBLING = 15;
+  const ADD_FRENCH_LOW = 25;
+  const ADD_FRENCH_HIGH = 50;
+  const ADD_CAN_EDU_1_2 = 15;
+  const ADD_CAN_EDU_3 = 30;
+  const ADD_PNP = 600;
+
+  function clbFromIELTS(band) {
+    const map = { 4: 4, 4.5: 5, 5: 6, 5.5: 7, 6: 8, 6.5: 9, 7: 9, 7.5: 9, 8: 10, 8.5: 10, 9: 10 };
+    return map[band] ?? Math.min(10, Math.floor(band));
+  }
+  function ieltsToClbIndex(clb) {
+    if (clb < 4) return 0;
+    if (clb <= 5) return 1;
+    if (clb === 6) return 2;
+    if (clb === 7) return 3;
+    if (clb === 8) return 4;
+    if (clb === 9) return 5;
+    return 6;
+  }
+
+  function calculateCRS(profile) {
+    const hasSpouse = profile.hasSpouse === 1;
+    const age = Math.min(45, Math.max(17, profile.age || 30));
+    const agePoints = hasSpouse ? (AGE_SPOUSE[age] ?? 0) : (AGE_SINGLE[age] ?? 0);
+    const eduIndex = Math.min(7, Math.max(0, profile.education ?? 4));
+    const eduPoints = (hasSpouse ? EDU_SPOUSE : EDU_SINGLE)[eduIndex];
+    const firstLangPer = hasSpouse ? FIRST_LANG_SPOUSE : FIRST_LANG_SINGLE;
+    let firstLangPoints = 0;
+    ['L','R','W','S'].forEach(k => {
+      const clb = profile[`clb_${k.toLowerCase()}`] ?? 7;
+      firstLangPoints += firstLangPer[ieltsToClbIndex(clb)] ?? 0;
+    });
+    let secondLangPoints = 0;
+    const secondClb = profile.secondLangCLB ?? 0;
+    if (secondClb >= 5) {
+      const idx = secondClb <= 6 ? 1 : secondClb <= 8 ? 2 : 3;
+      secondLangPoints = (hasSpouse ? SECOND_LANG_SPOUSE : SECOND_LANG_SINGLE)[idx] * 4;
+    }
+    const canWorkYrs = Math.min(5, Math.max(0, profile.canWork ?? 0));
+    const canWorkPoints = (hasSpouse ? CAN_WORK_SPOUSE : CAN_WORK_SINGLE)[canWorkYrs] ?? 0;
+    let spousePoints = 0;
+    if (hasSpouse) {
+      spousePoints += SPOUSE_EDU[Math.min(7, profile.spouseEdu ?? 4)] ?? 0;
+      spousePoints += (SPOUSE_LANG[ieltsToClbIndex(profile.spouseLang ?? 5)] ?? 0) * 4;
+      spousePoints += SPOUSE_CAN_WORK[Math.min(5, profile.spouseCanWork ?? 0)] ?? 0;
+    }
+    const foreignYrs = Math.min(6, Math.max(0, profile.foreignWork ?? 0));
+    const foreignBucket = foreignYrs === 0 ? 0 : foreignYrs <= 2 ? 1 : 2;
+    const allClb9 = ['l','r','w','s'].every(k => (profile['clb_' + k] ?? 7) >= 9);
+    const minClb = profile.minClb ?? Math.min(profile.clb_l ?? 7, profile.clb_r ?? 7, profile.clb_w ?? 7, profile.clb_s ?? 7);
+    const eduBucket = eduIndex === 0 ? 0 : eduIndex <= 2 ? 1 : eduIndex <= 5 ? 2 : eduIndex === 6 ? 3 : 4;
+    const eduTransferLang = TRANSFER_EDU_LANG[eduBucket] ?? [0,0];
+    const eduTransferCan = TRANSFER_EDU_CAN[eduBucket] ?? [0,0];
+    const transferEduLang = allClb9 ? eduTransferLang[1] : (minClb >= 7 ? eduTransferLang[0] : 0);
+    const transferEduCan = canWorkYrs >= 2 ? eduTransferCan[1] : (canWorkYrs >= 1 ? eduTransferCan[0] : 0);
+    const transferForeignLang = (TRANSFER_FOREIGN_LANG[foreignBucket] ?? [0,0])[allClb9 ? 1 : (minClb >= 7 ? 0 : 0)];
+    const transferForeignCan = (TRANSFER_FOREIGN_CAN[foreignBucket] ?? [0,0])[canWorkYrs >= 2 ? 1 : (canWorkYrs >= 1 ? 0 : 0)];
+    const transfer = Math.min(100, (transferEduLang || 0) + (transferEduCan || 0) + (transferForeignLang || 0) + (transferForeignCan || 0));
+    let add = 0;
+    if (profile.sibling) add += ADD_SIBLING;
+    if (profile.canEdu === 1) add += ADD_CAN_EDU_1_2;
+    if (profile.canEdu === 2) add += ADD_CAN_EDU_3;
+    if (profile.frenchCLB >= 7) add += (profile.englishCLB >= 5 ? ADD_FRENCH_HIGH : ADD_FRENCH_LOW);
+    if (profile.pnp) add += ADD_PNP;
+    return agePoints + eduPoints + firstLangPoints + secondLangPoints + canWorkPoints + spousePoints + transfer + add;
+  }
+
+  function profileFromForm(adjustments) {
+    const get = id => document.getElementById(id);
+    const lang = (id) => {
+      const s = get(id);
+      if (!s) return 7;
+      const v = s.value;
+      if (v === '' || v == null) return 7;
+      return parseFloat(v);
+    };
+    const clbL = clbFromIELTS(parseFloat(lang('langL') || 6));
+    const clbR = clbFromIELTS(parseFloat(lang('langR') || 6));
+    const clbW = clbFromIELTS(parseFloat(lang('langW') || 6));
+    const clbS = clbFromIELTS(parseFloat(lang('langS') || 6));
+    const minClb = Math.min(clbL, clbR, clbW, clbS);
+    const adj = adjustments || {};
+    const canWorkBase = parseInt(get('profileCanWork')?.value || 0, 10);
+    const canWorkAdj = parseInt(adj.canWork ?? get('adjCanWork')?.value ?? 0, 10);
+    const secondLangCLB = adj.french != null ? adj.french : parseInt(get('adjFrench')?.value ?? get('secondLangCLB')?.value ?? 0, 10);
+    const pnp = adj.pnp != null ? adj.pnp : parseInt(get('adjPNP')?.value ?? get('profilePNP')?.value ?? 0, 10);
+    const langDeltas = { L: adj.L ?? 0, R: adj.R ?? 0, W: adj.W ?? 0, S: adj.S ?? 0 };
+    const bandL = parseFloat(get('langL')?.value || 6) + (langDeltas.L || 0);
+    const bandR = parseFloat(get('langR')?.value || 6) + (langDeltas.R || 0);
+    const bandW = parseFloat(get('langW')?.value || 6) + (langDeltas.W || 0);
+    const bandS = parseFloat(get('langS')?.value || 6) + (langDeltas.S || 0);
+    return {
+      age: parseInt(get('profileAge')?.value || 30, 10),
+      education: parseInt(get('profileEducation')?.value || 4, 10),
+      hasSpouse: parseInt(get('profileSpouse')?.value || 0, 10),
+      spouseEdu: 4,
+      spouseLang: 7,
+      spouseCanWork: 0,
+      clb_l: clbFromIELTS(bandL),
+      clb_r: clbFromIELTS(bandR),
+      clb_w: clbFromIELTS(bandW),
+      clb_s: clbFromIELTS(bandS),
+      minClb: Math.min(clbFromIELTS(bandL), clbFromIELTS(bandR), clbFromIELTS(bandW), clbFromIELTS(bandS)),
+      secondLangCLB,
+      englishCLB: minClb,
+      canWork: Math.min(5, canWorkBase + canWorkAdj),
+      foreignWork: parseInt(get('profileForeignWork')?.value || 0, 10),
+      sibling: parseInt(get('profileSibling')?.value || 0, 10) === 1,
+      canEdu: parseInt(get('profileCanEdu')?.value || 0, 10),
+      frenchCLB: secondLangCLB,
+      pnp: pnp === 1
+    };
+  }
+
+  // ——— State ———
+  const STORAGE_KEYS = { profile: 'woodstream_profile', scenarios: 'woodstream_scenarios', lastVisit: 'woodstream_last_visit', policySeen: 'woodstream_policy_seen' };
+  let baseScore = 0;
+  let currentScore = 0;
+  let lastRenderedScore = -1;
+  let policyIndex = 0;
+  let caseIndex = 0;
+  let advisorTimeout = null;
+  let idleTimeout = null;
+
+  function loadProfile() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEYS.profile);
+      if (!raw) return;
+      const p = JSON.parse(raw);
+      const get = id => document.getElementById(id);
+      if (p.age != null) { const el = get('profileAge'); if (el) el.value = p.age; }
+      if (p.education != null) { const el = get('profileEducation'); if (el) el.value = String(p.education); }
+      if (p.hasSpouse != null) { const el = get('profileSpouse'); if (el) el.value = String(p.hasSpouse); }
+      if (p.canWork != null) { const el = get('profileCanWork'); if (el) el.value = p.canWork; }
+      if (p.foreignWork != null) { const el = get('profileForeignWork'); if (el) el.value = p.foreignWork; }
+      if (p.sibling != null) { const el = get('profileSibling'); if (el) el.value = p.sibling ? '1' : '0'; }
+      if (p.canEdu != null) { const el = get('profileCanEdu'); if (el) el.value = String(p.canEdu); }
+      if (p.pnp != null) { const el = get('profilePNP'); if (el) el.value = p.pnp ? '1' : '0'; }
+    } catch (_) {}
+  }
+
+  function saveProfile() {
+    const p = profileFromForm({});
+    localStorage.setItem(STORAGE_KEYS.profile, JSON.stringify({ age: p.age, education: p.education, hasSpouse: p.hasSpouse, canWork: p.canWork, foreignWork: p.foreignWork, sibling: p.sibling, canEdu: p.canEdu, pnp: p.pnp }));
+  }
+
+  function loadScenarios() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEYS.scenarios);
+      return raw ? JSON.parse(raw) : [];
+    } catch (_) { return []; }
+  }
+
+  function saveScenarios(arr) {
+    localStorage.setItem(STORAGE_KEYS.scenarios, JSON.stringify(arr.slice(-3)));
+  }
+
+  // ——— IELTS band options ———
+  function fillLanguageSelects() {
+    const bands = [4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9];
+    ['langL','langR','langW','langS'].forEach(id => {
+      const sel = document.getElementById(id);
+      if (!sel) return;
+      sel.innerHTML = bands.map(b => `<option value="${b}">${b}</option>`).join('');
+      sel.value = '6';
+    });
+  }
+
+  // ——— Score animation (spring) ———
+  function animateValue(el, from, to, duration, onStep) {
+    if (from === to) { if (onStep) onStep(to); return; }
+    const start = performance.now();
+    const ease = t => {
+      if (t <= 0) return 0;
+      if (t >= 1) return 1;
+      return 1 - Math.pow(2, -10 * t) * Math.cos((t * Math.PI) / 0.4);
+    };
+    function tick(now) {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = ease(t);
+      const v = Math.round(from + (to - from) * eased);
+      el.textContent = v;
+      if (onStep) onStep(v);
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function updateScoreUI(score, delta) {
+    const el = document.getElementById('liveScore');
+    const deltaEl = document.getElementById('scoreDelta');
+    if (!el) return;
+    const from = lastRenderedScore < 0 ? score : lastRenderedScore;
+    lastRenderedScore = score;
+    animateValue(el, from, score, 600, v => {
+      if (delta != null && delta !== 0) {
+        if (!deltaEl) return;
+        deltaEl.classList.remove('hidden');
+        deltaEl.textContent = (delta >= 0 ? '+' : '') + delta;
+        deltaEl.className = 'text-sm ' + (delta >= 0 ? 'delta-positive' : 'text-red-400');
+      }
+    });
+    if (delta != null && deltaEl) setTimeout(() => { deltaEl.classList.add('hidden'); }, 2000);
+  }
+
+  function recalc(showDelta) {
+    baseScore = calculateCRS(profileFromForm({}));
+    const adj = {
+      L: parseFloat(document.getElementById('adjL')?.value || 0),
+      R: parseFloat(document.getElementById('adjR')?.value || 0),
+      W: parseFloat(document.getElementById('adjW')?.value || 0),
+      S: parseFloat(document.getElementById('adjS')?.value || 0),
+      french: parseInt(document.getElementById('adjFrench')?.value || 0, 10),
+      canWork: parseInt(document.getElementById('adjCanWork')?.value || 0, 10),
+      pnp: parseInt(document.getElementById('adjPNP')?.value || 0, 10) === 1
+    };
+    currentScore = calculateCRS(profileFromForm(adj));
+    const delta = showDelta ? (currentScore - baseScore) : null;
+    updateScoreUI(currentScore, delta);
+    updateGauge();
+    updateDrawChart();
+    updateRankingBand();
+    updateStrategyList();
+  }
+
+  function updateGauge() {
+    const recent = DRAWS.slice(0, 6);
+    const count = recent.filter(d => currentScore >= d.cutoff).length;
+    const pct = recent.length ? Math.round((count / recent.length) * 100) : 0;
+    const gauge = document.getElementById('gaugeFill');
+    const pctEl = document.getElementById('gaugePercent');
+    if (gauge) {
+      const circumference = 2 * Math.PI * 15.5;
+      const dash = (pct / 100) * circumference;
+      gauge.setAttribute('stroke-dasharray', `${dash} ${circumference - dash}`);
+    }
+    if (pctEl) pctEl.textContent = pct + '%';
+  }
+
+  function updateDrawChart() {
+    const recent = DRAWS.slice(0, 6).reverse();
+    const cutoffs = recent.map(d => d.cutoff);
+    const maxC = Math.max(...cutoffs, currentScore);
+    const minC = Math.min(...cutoffs, currentScore);
+    const range = Math.max(1, maxC - minC);
+    const container = document.getElementById('drawChart');
+    const labels = document.getElementById('drawChartLabels');
+    if (!container) return;
+    const w = 180;
+    const h = 64;
+    const pad = { top: 4, right: 4, bottom: 16, left: 4 };
+    const innerH = h - pad.top - pad.bottom;
+    const innerW = w - pad.left - pad.right;
+    const n = recent.length;
+    const barW = Math.max(8, (innerW / n) - 4);
+    const y = (cut) => pad.top + innerH - ((cut - minC) / range) * innerH;
+    let svg = '<svg class="w-full max-w-[200px]" viewBox="0 0 ' + (w + 20) + ' ' + h + '" preserveAspectRatio="xMidYMid meet">';
+    recent.forEach((d, i) => {
+      const bh = ((d.cutoff - minC) / range) * innerH;
+      const by = pad.top + innerH - bh;
+      svg += '<rect x="' + (pad.left + i * (innerW / n) + 2) + '" y="' + by + '" width="' + (barW - 2) + '" height="' + Math.max(2, bh) + '" rx="2" fill="rgb(51 65 85)" class="transition-all duration-300"/>';
+    });
+    const userY = y(currentScore);
+    if (userY >= pad.top && userY <= pad.top + innerH) {
+      svg += '<line x1="' + pad.left + '" y1="' + userY + '" x2="' + (pad.left + innerW) + '" y2="' + userY + '" stroke="#c9a227" stroke-width="1.5" class="transition-all duration-300"/>';
+    }
+    svg += '</svg>';
+    container.innerHTML = svg;
+    if (labels) {
+      labels.innerHTML = recent.map(d => d.date.slice(5)).join(' ');
+    }
+  }
+
+  function updateRankingBand() {
+    const el = document.getElementById('rankingBand');
+    if (!el) return;
+    const simulatedMedian = 470;
+    const simulatedStd = 45;
+    const z = (currentScore - simulatedMedian) / simulatedStd;
+    let band = 'Middle of pool';
+    if (z >= 1.5) band = 'Top 5% of pool';
+    else if (z >= 1) band = 'Top 15% of pool';
+    else if (z >= 0.5) band = 'Top 30% of pool';
+    else if (z >= 0) band = 'Above median';
+    else if (z >= -0.5) band = 'Below median';
+    else band = 'Lower pool';
+    el.textContent = band;
+  }
+
+  function updateStrategyList() {
+    const list = document.getElementById('strategyList');
+    if (!list) return;
+    const recs = getTopRecommendations();
+    list.innerHTML = recs.map((r, i) => `
+      <li class="strategy-item">
+        <button type="button" class="w-full px-4 py-3 flex justify-between items-center text-left hover:bg-white/5 transition-colors gold-shimmer relative" data-index="${i}">
+          <span class="text-sm text-slate-300">${r.title}</span>
+          <span class="text-xs text-amber-400/80">+${r.points} pts · ~${r.weeks} wks</span>
+          <svg class="w-4 h-4 text-slate-500 strategy-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="strategy-detail hidden px-4 pb-3 text-sm text-slate-400 border-b border-white/5">${r.detail}</div>
+      </li>
+    `).join('');
+    list.querySelectorAll('.strategy-item button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.strategy-item');
+        const detail = item.querySelector('.strategy-detail');
+        const chev = item.querySelector('.strategy-chevron');
+        detail.classList.toggle('hidden');
+        chev.classList.toggle('rotate-180');
+      });
+    });
+  }
+
+  function getTopRecommendations() {
+    const p = profileFromForm({});
+    const recs = [];
+    if (!p.pnp && currentScore < 550) {
+      recs.push({ title: 'Provincial Nomination (PNP)', points: 600, weeks: 26, detail: `A provincial nomination would add 600 points, bringing your score to ${currentScore + 600}. This would make you competitive for virtually all recent draws. Consider exploring PNP streams aligned with your occupation and province.` });
+    }
+    const minClb = Math.min(p.clb_l, p.clb_r, p.clb_w, p.clb_s);
+    if (minClb < 9 && p.education >= 1) {
+      const gain = estimatePointsFromCLB9(minClb, p.hasSpouse);
+      recs.push({ title: 'First official language to CLB 9', points: gain, weeks: 8, detail: `Improving all four abilities to CLB 9 could add approximately ${gain} points (core language + transferability). Your score could reach about ${currentScore + gain}, making you competitive for a higher share of recent draws.` });
+    }
+    if (p.frenchCLB < 7) {
+      recs.push({ title: 'French (NCLC 7+)', points: 50, weeks: 24, detail: `Achieving NCLC 7 or higher in all four French skills would add 50 points (or 25 if English remains below CLB 5). This would bring your score to ${currentScore + 50}, with strong relevance to French category draws.` });
+    }
+    if (p.canWork < 5 && p.canWork < 4) {
+      const extraYrs = Math.min(2, 5 - p.canWork);
+      const gain = estimateCanadianWorkGain(p.canWork, extraYrs, p.hasSpouse);
+      recs.push({ title: `Additional Canadian work (+${extraYrs} year(s))`, points: gain, weeks: 52 * extraYrs, detail: `Adding ${extraYrs} year(s) of Canadian work could add approximately ${gain} points (core + transferability). Score could reach about ${currentScore + gain}.` });
+    }
+    return recs.slice(0, 3);
+  }
+
+  function estimatePointsFromCLB9(currentMinClb, hasSpouse) {
+    const per = hasSpouse ? [0,6,8,16,22,29,32] : [0,6,9,17,23,31,34];
+    let gain = (per[6] - (per[currentMinClb] ?? per[5])) * 4;
+    if (currentMinClb < 5) gain += 25;
+    return Math.min(80, gain);
+  }
+
+  function estimateCanadianWorkGain(currentYrs, addYrs, hasSpouse) {
+    const arr = hasSpouse ? [0,35,46,56,63,70] : [0,40,53,64,72,80];
+    const newYrs = Math.min(5, currentYrs + addYrs);
+    return (arr[newYrs] ?? arr[5]) - (arr[currentYrs] ?? 0);
+  }
+
+  // ——— Policy Console ———
+  function getProfileCategories() {
+    const p = profileFromForm({});
+    const cat = [];
+    if (p.frenchCLB >= 7) cat.push('french');
+    if (p.pnp) cat.push('pnp');
+    if (p.education >= 6) cat.push('stem');
+    cat.push('all');
+    return cat;
+  }
+
+  function isPolicyRelevant(item) {
+    const profileCats = getProfileCategories();
+    return item.categories.some(c => profileCats.includes(c));
+  }
+
+  function renderPolicyItem(index) {
+    const item = POLICY_ITEMS[index % POLICY_ITEMS.length];
+    const headlineEl = document.getElementById('policyHeadline');
+    const tagEl = document.getElementById('policyTag');
+    const impactEl = document.getElementById('policyImpact');
+    const relEl = document.getElementById('policyRelevance');
+    if (headlineEl) headlineEl.textContent = item.headline;
+    if (tagEl) tagEl.textContent = item.programTag;
+    let impact = '';
+    if (item.headline.toLowerCase().includes('threshold') || item.headline.toLowerCase().includes('cut-off') || item.headline.toLowerCase().includes('cut-off')) impact = 'CRS threshold may affect invitation likelihood.';
+    if (item.headline.toLowerCase().includes('french')) impact = 'French-language draws and bonus points relevant.';
+    if (item.headline.toLowerCase().includes('stem')) impact = 'STEM category draw criteria.';
+        if (item.headline.toLowerCase().includes('removed') || item.headline.toLowerCase().includes('job offer')) impact = 'Job offer points no longer apply.';
+    if (impactEl) impactEl.textContent = impact || 'Policy or draw update.';
+    const relevant = isPolicyRelevant(item);
+    if (relEl) { relEl.classList.toggle('hidden', !relevant); }
+    const tile = document.getElementById('policy-console');
+    if (tile) tile.classList.toggle('policy-relevant', relevant);
+    const p = profileFromForm({});
+    document.querySelectorAll('.policy-pulse').forEach(el => el.classList.remove('policy-pulse'));
+    item.categories.forEach(cat => {
+      if (cat === 'french' && (p.frenchCLB ?? 0) < 7) {
+        const el = document.getElementById('adjFrench');
+        if (el) el.closest('div')?.classList.add('policy-pulse');
+      }
+      if (cat === 'pnp' && !p.pnp) {
+        const el = document.getElementById('adjPNP') || document.getElementById('profilePNP');
+        if (el) (el.closest('label') || el.closest('div'))?.classList.add('policy-pulse');
+      }
+    });
+  }
+
+  function rotatePolicy() {
+    policyIndex = (policyIndex + 1) % POLICY_ITEMS.length;
+    renderPolicyItem(policyIndex);
+  }
+
+  function rotateCase() {
+    caseIndex = (caseIndex + 1) % CASE_OUTCOMES.length;
+    const c = CASE_OUTCOMES[caseIndex];
+    const text = document.getElementById('caseOutcomeText');
+    const levers = document.getElementById('caseOutcomeLevers');
+    if (text) text.textContent = `CRS ${c.fromScore} → ${c.toScore}. ${c.summary}`;
+    if (levers) levers.textContent = 'Strategy: ' + c.levers;
+  }
+
+  let caseRotationInterval = null;
+  function startCaseRotation() {
+    if (caseRotationInterval) clearInterval(caseRotationInterval);
+    caseRotationInterval = setInterval(rotateCase, 8000);
+  }
+  document.getElementById('caseOutcomesRotate')?.addEventListener('mouseenter', () => { if (caseRotationInterval) clearInterval(caseRotationInterval); });
+  document.getElementById('caseOutcomesRotate')?.addEventListener('mouseleave', startCaseRotation);
+
+  // ——— Draw simulator ———
+  function updateDrawSimulator() {
+    const cutoff = parseInt(document.getElementById('drawSimulatorCutoff')?.value || 500, 10);
+    const count = DRAWS.filter(d => currentScore >= cutoff).length;
+    const el = document.getElementById('drawSimulatorResult');
+    if (el) el.textContent = `Your score would have been invited in ${count} of ${DRAWS.length} past draws.`;
+  }
+
+  // ——— Welcome back ———
+  function showWelcome() {
+    const last = localStorage.getItem(STORAGE_KEYS.lastVisit);
+    const now = new Date().toISOString().slice(0, 10);
+    const banner = document.getElementById('welcomeBanner');
+    const text = document.getElementById('welcomeText');
+    if (!banner || !text) return;
+    if (!last) {
+      localStorage.setItem(STORAGE_KEYS.lastVisit, now);
+      banner.classList.add('hidden');
+      return;
+    }
+    const policyUpdates = POLICY_ITEMS.filter(p => p.date >= last).length;
+    if (policyUpdates > 0) {
+      banner.classList.remove('hidden');
+      text.textContent = `Welcome back. Since your last visit, ${policyUpdates} policy update(s) may affect your strategy. Review the Policy Intelligence Console for relevance to your profile.`;
+    } else {
+      banner.classList.remove('hidden');
+      text.textContent = 'Welcome back. Your saved profile has been restored.';
+    }
+    localStorage.setItem(STORAGE_KEYS.lastVisit, now);
+  }
+
+  // ——— Saved scenarios ———
+  function renderSavedScenarios() {
+    const arr = loadScenarios();
+    const container = document.getElementById('savedScenarios');
+    if (!container) return;
+    container.innerHTML = arr.map((s, i) => `
+      <button type="button" class="saved-scenario px-3 py-1.5 rounded border border-white/20 text-xs text-slate-400 hover:border-amber-500/50 hover:text-amber-200 transition-colors" data-index="${i}">
+        Scenario ${i + 1}: ${s.score} pts
+      </button>
+    `).join('');
+    container.querySelectorAll('.saved-scenario').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.dataset.index, 10);
+        const list = loadScenarios();
+        const s = list[idx];
+        if (!s) return;
+        document.getElementById('adjL').value = s.adj?.L ?? 0;
+        document.getElementById('adjR').value = s.adj?.R ?? 0;
+        document.getElementById('adjW').value = s.adj?.W ?? 0;
+        document.getElementById('adjS').value = s.adj?.S ?? 0;
+        document.getElementById('adjFrench').value = s.adj?.french ?? 0;
+        document.getElementById('adjCanWork').value = s.adj?.canWork ?? 0;
+        document.getElementById('adjPNP').value = s.adj?.pnp ? '1' : '0';
+        updateAdjLabels();
+        recalc(true);
+      });
+    });
+  }
+
+  function updateAdjLabels() {
+    ['adjL','adjR','adjW','adjS'].forEach(id => {
+      const v = document.getElementById(id)?.value;
+      const label = document.getElementById(id + 'Val');
+      if (label) label.textContent = v;
+    });
+    const v = document.getElementById('adjFrench')?.value;
+    const l = document.getElementById('adjFrenchVal');
+    if (l) l.textContent = v;
+    const c = document.getElementById('adjCanWork')?.value;
+    const lc = document.getElementById('adjCanWorkVal');
+    if (lc) lc.textContent = c;
+  }
+
+  // ——— Scenario comparison ———
+  function renderScenarioComparison() {
+    const arr = loadScenarios();
+    const base = baseScore;
+    const container = document.getElementById('scenarioComparison');
+    if (!container) return;
+    let html = `<div class="p-3 rounded bg-slate-800/50 border border-white/10"><p class="text-slate-500 text-xs">Base profile</p><p class="text-lg font-semibold text-white">${base}</p></div>`;
+    arr.forEach((s, i) => {
+      html += `<div class="p-3 rounded bg-slate-800/50 border border-white/10"><p class="text-slate-500 text-xs">Scenario ${i + 1}</p><p class="text-lg font-semibold text-white">${s.score}</p><p class="text-xs text-amber-400/80">+${s.score - base}</p></div>`;
+    });
+    container.innerHTML = html;
+  }
+
+  // ——— PDF ———
+  function generatePdfBlob() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const name = document.getElementById('blueprintName')?.value || '';
+    const email = document.getElementById('blueprintEmail')?.value || '';
+    const ref = 'BLUEPRINT-' + Date.now().toString(36).toUpperCase();
+    doc.setFillColor(10, 15, 26);
+    doc.rect(0, 0, 210, 297, 'F');
+    doc.setTextColor(201, 162, 39);
+    doc.setFontSize(18);
+    doc.text('IMMIGRATION BLUEPRINT', 20, 25);
+    doc.setTextColor(224, 232, 240);
+    doc.setFontSize(10);
+    doc.text('Executive strategy document · ' + new Date().toISOString().slice(0, 10), 20, 32);
+    doc.text('Reference: ' + ref, 20, 38);
+    doc.setTextColor(148, 163, 184);
+    doc.text('Candidate: ' + name + ' · ' + email, 20, 46);
+    doc.setTextColor(224, 232, 240);
+    doc.setFontSize(12);
+    doc.text('CRS snapshot', 20, 58);
+    doc.setFontSize(10);
+    doc.text('Current score: ' + currentScore, 20, 66);
+    doc.text('Ranking band: ' + (document.getElementById('rankingBand')?.textContent || '—'), 20, 72);
+    doc.text('Competitive analysis', 20, 84);
+    doc.text('Invitation probability (last 6 draws): ' + document.getElementById('gaugePercent')?.textContent || '0%', 20, 92);
+    doc.text('Optimization path', 20, 104);
+    const list = document.querySelectorAll('#strategyList .strategy-item');
+    let y = 112;
+    list.forEach((el, i) => {
+      const title = el.querySelector('button span:first-child')?.textContent;
+      if (title && y < 270) { doc.text((i + 1) + '. ' + title, 20, y); y += 8; }
+    });
+    doc.setTextColor(201, 162, 39);
+    doc.setFontSize(8);
+    doc.text('WOODSTREAM IMMIGRATION — Woodstream Immigration Services Inc.', 20, 285);
+    doc.text('Practice Areas · Jurisdiction · Professional Responsibility Disclaimer', 20, 290);
+    return doc.output('blob');
+  }
+
+  function showPdfPreview() {
+    const ref = 'BLUEPRINT-' + Date.now().toString(36).toUpperCase();
+    const preview = document.getElementById('pdfPreview');
+    if (preview) {
+      preview.textContent = [
+        'IMMIGRATION BLUEPRINT',
+        'Reference: ' + ref,
+        'Date: ' + new Date().toISOString().slice(0, 10),
+        '',
+        'Candidate: ' + (document.getElementById('blueprintName')?.value || '') + ' | ' + (document.getElementById('blueprintEmail')?.value || ''),
+        '',
+        'CRS SNAPSHOT',
+        'Current score: ' + currentScore,
+        'Ranking band: ' + (document.getElementById('rankingBand')?.textContent || '—'),
+        '',
+        'COMPETITIVE ANALYSIS',
+        'Invitation probability: ' + (document.getElementById('gaugePercent')?.textContent || '0%'),
+        '',
+        'OPTIMIZATION PATH (TOP 3)',
+        ...Array.from(document.querySelectorAll('#strategyList .strategy-item')).slice(0, 3).map((el, i) => (i + 1) + '. ' + (el.querySelector('button span:first-child')?.textContent || ''))
+      ].join('\n');
+    }
+    document.getElementById('pdfModal').classList.remove('hidden');
+    document.getElementById('pdfModal').classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // ——— Advisor note ———
+  function showAdvisorNote() {
+    const p = profileFromForm({});
+    if (p.pnp) return;
+    const note = document.getElementById('advisorNote');
+    const text = document.getElementById('advisorNoteText');
+    if (!note || !text) return;
+    text.textContent = 'Based on your profile, a PNP nomination could increase your score by 600 points. Would you like to explore pathways?';
+    note.classList.remove('hidden');
+  }
+
+  function scheduleAdvisorNote() {
+    idleTimeout = setTimeout(showAdvisorNote, 10000);
+  }
+
+  // ——— Magnetic buttons ———
+  function setupMagnetic(el) {
+    if (!el) return;
+    el.addEventListener('mousemove', e => {
+      const rect = el.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      const pull = 0.15;
+      el.style.transform = `translate(${x * 8}px, ${y * 8}px)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  }
+
+  // ——— Scroll progress ———
+  function updateScrollProgress() {
+    const p = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    const bar = document.getElementById('scrollProgress');
+    if (bar) bar.style.width = (p || 0) + '%';
+  }
+
+  // ——— IntersectionObserver tiles ———
+  function observeTiles() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.tile-enter').forEach(t => observer.observe(t));
+  }
+
+  // ——— Debounce ———
+  function debounce(fn, ms) {
+    let t;
+    return function(...args) {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, args), ms);
+    };
+  }
+
+  // ——— Init ———
+  function init() {
+    fillLanguageSelects();
+    loadProfile();
+    const recalcDebounced = debounce(() => recalc(true), 100);
+    ['profileAge','profileEducation','profileSpouse','profileCanWork','profileForeignWork','profileSibling','profileCanEdu','profilePNP','langL','langR','langW','langS','secondLangCLB','adjL','adjR','adjW','adjS','adjFrench','adjCanWork','adjPNP','drawSimulatorCutoff'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', recalcDebounced);
+      if (el) el.addEventListener('change', recalcDebounced);
+    });
+    document.getElementById('secondLangCLB')?.addEventListener('input', () => {
+      const v = document.getElementById('secondLangCLB').value;
+      document.getElementById('secondLangLabel').textContent = 'CLB ' + (v === '0' ? '0 (none)' : v);
+    });
+    document.getElementById('adjL')?.addEventListener('input', () => { document.getElementById('adjLVal').textContent = document.getElementById('adjL').value; recalcDebounced(); });
+    document.getElementById('adjR')?.addEventListener('input', () => { document.getElementById('adjRVal').textContent = document.getElementById('adjR').value; recalcDebounced(); });
+    document.getElementById('adjW')?.addEventListener('input', () => { document.getElementById('adjWVal').textContent = document.getElementById('adjW').value; recalcDebounced(); });
+    document.getElementById('adjS')?.addEventListener('input', () => { document.getElementById('adjSVal').textContent = document.getElementById('adjS').value; recalcDebounced(); });
+    document.getElementById('adjFrench')?.addEventListener('input', () => { document.getElementById('adjFrenchVal').textContent = document.getElementById('adjFrench').value; recalcDebounced(); });
+    document.getElementById('adjCanWork')?.addEventListener('input', () => { document.getElementById('adjCanWorkVal').textContent = document.getElementById('adjCanWork').value; recalcDebounced(); });
+    document.getElementById('adjPNP')?.addEventListener('change', recalcDebounced);
+
+    document.getElementById('toggleAdjustments')?.addEventListener('click', () => {
+      document.getElementById('panelAdjustments').classList.toggle('open');
+      document.getElementById('chevronAdjust').classList.toggle('rotate-180');
+    });
+
+    document.getElementById('saveScenario')?.addEventListener('click', () => {
+      const adj = {
+        L: parseFloat(document.getElementById('adjL')?.value || 0),
+        R: parseFloat(document.getElementById('adjR')?.value || 0),
+        W: parseFloat(document.getElementById('adjW')?.value || 0),
+        S: parseFloat(document.getElementById('adjS')?.value || 0),
+        french: parseInt(document.getElementById('adjFrench')?.value || 0, 10),
+        canWork: parseInt(document.getElementById('adjCanWork')?.value || 0, 10),
+        pnp: parseInt(document.getElementById('adjPNP')?.value || 0, 10) === 1
+      };
+      const list = loadScenarios();
+      list.push({ score: currentScore, adj });
+      saveScenarios(list);
+      renderSavedScenarios();
+      renderScenarioComparison();
+      document.getElementById('scenarioSaveStatus').textContent = 'Saved (max 3).';
+      setTimeout(() => { document.getElementById('scenarioSaveStatus').textContent = ''; }, 2000);
+    });
+
+    document.getElementById('openCRSPanel')?.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('crs-engine').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('blueprintForm')?.addEventListener('submit', e => {
+      e.preventDefault();
+      showPdfPreview();
+    });
+
+    document.getElementById('downloadPdf')?.addEventListener('click', () => {
+      const blob = generatePdfBlob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'Immigration-Blueprint-' + new Date().toISOString().slice(0, 10) + '.pdf';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    function closePdfModal() {
+      document.getElementById('pdfModal').classList.add('hidden');
+      document.getElementById('pdfModal').classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('closePdfModal')?.addEventListener('click', closePdfModal);
+    document.getElementById('closePdfModal2')?.addEventListener('click', closePdfModal);
+
+    document.getElementById('advisorDismiss')?.addEventListener('click', () => {
+      document.getElementById('advisorNote').classList.add('hidden');
+    });
+    document.getElementById('advisorHighlight')?.addEventListener('click', () => {
+      document.getElementById('advisorNote').classList.add('hidden');
+      document.getElementById('profilePNP').focus();
+      document.getElementById('panelAdjustments').classList.add('open');
+      document.getElementById('chevronAdjust').classList.remove('rotate-180');
+    });
+
+    ['openCRSPanel','saveScenario','advisorHighlight','advisorDismiss'].forEach(id => setupMagnetic(document.getElementById(id)));
+    document.querySelectorAll('.magnetic-wrap').forEach(setupMagnetic);
+
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('mousemove', () => { clearTimeout(idleTimeout); scheduleAdvisorNote(); });
+    window.addEventListener('keydown', () => { clearTimeout(idleTimeout); scheduleAdvisorNote(); });
+
+    renderPolicyItem(0);
+    setInterval(rotatePolicy, 6000);
+    rotateCase();
+    startCaseRotation();
+    recalc(false);
+    updateDrawSimulator();
+    document.getElementById('drawSimulatorCutoff')?.addEventListener('input', () => { updateDrawSimulator(); recalc(false); });
+    showWelcome();
+    renderSavedScenarios();
+    renderScenarioComparison();
+    observeTiles();
+    setInterval(saveProfile, 5000);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+  </script>
+
+  <!-- Immigration Policy Pulse: feed data and render (self-contained). -->
+  <!-- To use a live source: replace getPulseFeedData() with async fetch in renderPulseFeed(). -->
+  <script>
+(function() {
+  'use strict';
+
+  // ——— Data source: static for demo. For live data, replace this with an async function
+  // that fetches from RSS-to-JSON proxy or your API and returns the same shape.
+  // Example: async function getPulseFeedData() { const res = await fetch('/api/pulse-feed'); return res.json(); }
+  function getPulseFeedData() {
+    return [
+      { id: '1', date: 'Feb 26, 2026', headline: 'Processing Times Update', summary: 'Visitor visa processing improves while study permit volumes increase.', impact: 'Moderate', category: 'study' },
+      { id: '2', date: 'Feb 25, 2026', headline: 'Ontario Regional Immigration Pilot (RCIP) Update', summary: 'Additional occupations announced for PR eligibility.', impact: 'High', category: 'pnp' },
+      { id: '3', date: 'Feb 24, 2026', headline: 'IRCC Work Permit Clarification', summary: 'New guidance issued for RCIP and FCIP applicants.', impact: 'Low', category: 'work-permit' },
+      { id: '4', date: 'Feb 23, 2026', headline: 'Express Entry Draw Results', summary: 'All-program draw; CRS threshold unchanged. Invitations within expected range.', impact: 'Moderate', category: 'express-entry' }
+    ];
+  }
+
+  function renderPulseFeed(entries) {
+    var container = document.getElementById('pulseFeedContainer');
+    if (!container) return;
+    if (!entries.length) {
+      container.innerHTML = '<p class="text-slate-500 text-sm">No entries to display.</p>';
+      return;
+    }
+    container.innerHTML = entries.map(function(entry) {
+      return (
+        '<article class="pulse-item" role="article" data-category="' + (entry.category || '') + '">' +
+          '<time class="pulse-date" datetime="' + (entry.datetime || '') + '">' + escapeHtml(entry.date) + '</time>' +
+          '<h3 class="pulse-headline">' + escapeHtml(entry.headline) + '</h3>' +
+          '<p class="pulse-summary">' + escapeHtml(entry.summary) + '</p>' +
+          '<span class="pulse-impact" aria-label="Impact: ' + escapeHtml(entry.impact) + '">' + escapeHtml(entry.impact) + '</span>' +
+        '</article>'
+      );
+    }).join('');
+  }
+
+  function escapeHtml(s) {
+    if (s == null) return '';
+    var div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  function runPulseFeed(filter) {
+    var data = getPulseFeedData();
+    // If switching to async: getPulseFeedData().then(function(data) { ... });
+    var filtered = filter === 'all' ? data : data.filter(function(e) { return e.category === filter; });
+    renderPulseFeed(filtered);
+  }
+
+  function initPulseFilters() {
+    var container = document.getElementById('immigration-policy-pulse');
+    if (!container) return;
+    container.querySelectorAll('.pulse-filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var filter = this.getAttribute('data-filter');
+        container.querySelectorAll('.pulse-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        runPulseFeed(filter);
+      });
+    });
+  }
+
+  function initPulse() {
+    runPulseFeed('all');
+    initPulseFilters();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initPulse);
+  else initPulse();
+})();
+  </script>
+</body>
+</html>
